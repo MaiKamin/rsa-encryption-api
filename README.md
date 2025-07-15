@@ -1,7 +1,6 @@
 # rsa-encryption-api
 RSA Encryption and AES Encryption API Example
 
-Non Functional Requirement:
 - How to start service
 
     1. run command: npm install
