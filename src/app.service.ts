@@ -12,57 +12,6 @@ export class AppService {
     private rsaService: RsaService,
     private aesService: AesService,
   ) {}
-  getHello(): string {
-    return "Hello World!";
-  }
-
-  getEncryptAndDecryptWiteAes(data: EncryptDataRequestDto): any {
-    // Step 1: Validate – done automatically by DTO
-    const payload = data.payload;
-    // console.log("payload: ", payload);
-    // Step 2: Get AES Key
-    const aesKey = this.aesService.getAesKey();
-    // console.log("aesKey: ", aesKey);
-
-    // Step 3: Encrypt payload with AES
-    const data2 = this.aesService.encryptWithAes(aesKey, payload);
-
-    // console.log("data2: ", data2);
-
-    // Strp 4: Decrypt AES with private key
-    const data1 = this.aesService.decryptWithAes(aesKey, data2);
-
-    // console.log("data1: ", data1);
-
-    return {
-      data1: data1,
-      data2: data2,
-    };
-  }
-
-  getEncryptAndDecryptWiteRsa(data: EncryptDataRequestDto): any {
-    // Step 1: Validate – done automatically by DTO
-    const payload = data.payload;
-    // console.log("payload: ", payload);
-
-    // Step 3: Eecrypt data with Private key
-    // const data1 = this.rsaService.encryptWithPrivateKey(payload);
-    // Step 3: Eecrypt data with Public key
-    const data1 = this.rsaService.encryptWithPublicKey(payload);
-    // console.log("data1: ", data1);
-
-    // Step 4: Eecrypt data with Private key
-    const data2 = this.rsaService.decryptWithPrivateKey(data1);
-    // Step 4: Eecrypt data with Public key
-    // const data2 = this.rsaService.decryptWithPublicKey(data1);
-
-    // console.log("data2: ", data2);
-
-    return {
-      data1: data1,
-      data2: data2,
-    };
-  }
 
   getEncryptData(data: EncryptDataRequestDto): any {
     // Step 1: Validate – done automatically by DTO

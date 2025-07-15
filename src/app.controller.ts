@@ -1,7 +1,6 @@
 import {
   Body,
   Controller,
-  HttpCode,
   InternalServerErrorException,
   Post,
 } from "@nestjs/common";
@@ -35,40 +34,6 @@ export class AppController {
     try {
       const result = this.appService.getDecryptData(req) || null;
       const res: DecryptDataResponseDto = {
-        successful: true,
-        error_code: "",
-        data: result,
-      };
-      return res;
-    } catch {
-      throw new InternalServerErrorException("Encryption failed");
-    }
-  }
-
-  @Post("get-encrypt-decrypt-with-aes")
-  getEncryptAndDecryptWiteAes(
-    @Body() req: EncryptDataRequestDto,
-  ): EncryptDataResponseDto {
-    try {
-      const result = this.appService.getEncryptAndDecryptWiteAes(req) || null;
-      const res: EncryptDataResponseDto = {
-        successful: true,
-        error_code: "",
-        data: result,
-      };
-      return res;
-    } catch {
-      throw new InternalServerErrorException("Encryption failed");
-    }
-  }
-
-  @Post("get-encrypt-decrypt-with-rsa")
-  getEncryptAndDecryptWiteRsa(
-    @Body() req: EncryptDataRequestDto,
-  ): EncryptDataResponseDto {
-    try {
-      const result = this.appService.getEncryptAndDecryptWiteRsa(req) || null;
-      const res: EncryptDataResponseDto = {
         successful: true,
         error_code: "",
         data: result,

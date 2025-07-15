@@ -1,15 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import * as crypto from "crypto";
-
 @Injectable()
 export class RsaService {
   private publicKey: string;
   private privateKey: string;
 
   constructor(private configService: ConfigService) {
-    // this.publicKey = this.configService.get<string>("RSA_PUBLIC_KEY") ?? "";
-    // this.privateKey = this.configService.get<string>("RSA_PRIVATE_KEY") ?? "";
     this.init();
   }
 
